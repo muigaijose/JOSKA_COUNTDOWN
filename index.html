@@ -16,42 +16,83 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f7f7f7;
+            background-color: #add8e62c; 
         }
 
         .countdown {
             text-align: center;
-            background: #fff;
+            background-color: #add8e6; 
             border: 2px solid #ddd;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
+        .time-container {
+            display: flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+            font-weight: bold;
+            border: 2px solid #333333;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #add8e6; /* Light blue background */
+            flex-direction: column;
+            color: #333; /* Optional: Set text color to contrast with background */
+        }  
         .time {
-            font-size: 48px;
-            color: #333;
-            background-image: -moz-element();
+            font-weight: bold;
+            margin: 0 10px; 
+        }
+
+
+        /* Coloring individual countdown values */
+        #days {
+            color: #FF4500; /* Orange-Red for days */
+        }
+
+        #hours {
+            color: #32CD32; /* LimeGreen for hours */
+        }
+
+        #minutes {
+            color: #1E90FF; /* DodgerBlue for minutes */
+        }
+
+        #seconds {
+            color: #FFD700; /* Gold for seconds */
         }
 
         .label {
             font-size: 18px;
             color: #555;
         }
+
+        img {
+            margin-top: 20px;
+            border-radius: 8px;
+        }
     </style>
 </head>
-<body>
-<div class="countdown">
-    <h1>Welcome to JOSKA GLORIOUS FUND DRIVE!</h1>
-    <div class="time" id="days">0</div>
-    <div class="label"><H1>RUNNING OUT OF TIME</H1></div>
+<body>  
+<div class="countdown"> <aria-live="polite">
+    <h3>Welcome to JOSKA GLORIOUS FUND DRIVE!</h3>
+    <div class="time container">
+        <span class="time" id="days">0</span>days:
+        <span class="time" id="hours">0</span>hrs:
+        <span class="time" id="minutes">0</span>min:
+        <span class="time" id="seconds">0</span>secs
+    </div>
+    <div class="label"><H4>FAST APPROACHING</H4></div>
     <img src="image.jpg" alt="JOSKA Countdown" width="400" height="300">
     <p>Counting down to the GLORIOUS JOSKA FUNDDRIVE
         </p>
 </div>
 <script>
     // Set the date for the countdown
-    const targetDate = new Date("September 1, 2024").getTime();
+    const targetDate = new Date("2024-09-01T00:00:00").getTime();
 
     // Update the countdown every second
     const countdown = setInterval(function() {
@@ -65,13 +106,19 @@
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result
-        document.getElementById("days").innerHTML = `${days} days ${hours} HRS ${minutes} MIN ${seconds} SECs`;
-
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
 
         // If the countdown is finished
         if (distance < 0) {
             clearInterval(countdown);
-            document.getElementById("days").innerHTML = "EXPIRED";
+            document.getElementById("days").innerHTML = "0";
+            document.getElementById("hours").innerHTML = "0";
+            document.getElementById("minutes").innerHTML = "0";
+            document.getElementById("seconds").innerHTML = "0";
+            document.querySelector(".time-container").innerHTML = "EXPIRED";
         }
     }, 1000);
 </script>

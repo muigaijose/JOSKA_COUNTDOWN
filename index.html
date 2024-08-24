@@ -44,7 +44,7 @@
 <div class="countdown">
     <h1>Welcome to JOSKA GLORIOUS FUND DRIVE!</h1>
     <div class="time" id="days">0</div>
-    <div class="label"><H1>DAYS TO GO</H1></div>
+    <div class="label"><H1>RUNNING OUT OF TIME</H1></div>
     <img src="image.jpg" alt="JOSKA Countdown" width="400" height="300">
     <p>Counting down to the GLORIOUS JOSKA FUNDDRIVE
         </p>
@@ -60,9 +60,13 @@
 
         // Time calculations for days, hours, minutes, and seconds
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result
-        document.getElementById("days").innerHTML = days;
+        document.getElementById("days").innerHTML = `${days} days ${hours} hours ${minutes} minutes ${seconds} seconds`;
+
 
         // If the countdown is finished
         if (distance < 0) {
